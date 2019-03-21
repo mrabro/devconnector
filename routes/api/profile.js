@@ -12,10 +12,15 @@ const validateEducationInput = require("../../validation/education");
 const User = require("../../models/User");
 const Profile = require("../../models/Profile");
 
-// @route   GET api/profile/test
-// @desc    Tests profile route
+// @route   GET api/profile/all
+// @desc    Get all profiles
 // @access  Public
-router.get('/test', (req, res) => res.json({ msg: "profile work" }));
+router.get('/all', (req, res) => {
+    Profile.find().populate('user', ['name', 'avatar'])
+        .then(profiles => {
+            return res.json(profiles);
+        })
+});
 
 // @route   GET api/profile
 // @desc    Get current user profile

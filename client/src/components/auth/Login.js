@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from 'axios';
 
 class Login extends Component {
   constructor() {
@@ -18,6 +19,10 @@ class Login extends Component {
 
   onSubmit(e) {
     e.preventDefault();
+    const User = {
+      name: this.state.name,
+      password: this.state.password
+    }
   }
   render() {
     return (
